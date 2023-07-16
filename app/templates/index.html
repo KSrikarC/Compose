@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to   Bank of India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .warning {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome To Bank Of India</h1>
+    <form method="post" action="">
+        <p>Press 1 for Sign Up</p>
+        <p>Press 2 for Sign In</p>
+        <label for="choice">Enter your choice:</label>
+        <input type="text" id="choice" name="choice">
+        <br>
+        <input type="submit" value="Submit">
+        {% if warning %}
+        <p class="warning">{{ warning }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>

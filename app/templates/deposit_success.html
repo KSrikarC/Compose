@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Withdrawal Success - Bank of India</title>
+</head>
+
+<style>
+    .home-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .home-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .home-button a:hover {
+            background-color: #0056b3;
+        }
+</style>
+<body>
+    <h1>  BANK OF INDIA</h1>
+    <h2>Deposit Successful!</h2>
+    <p>Your Deposit of INR {{ amount }} /- has been processed successfully.</p>
+    <div class="home-button">
+        <a href="/homepage.html?username={{ username }}">Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage - Bank of India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .username {
+            text-align: right;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .options ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin-bottom: 10px;
+        }
+
+        .options li span {
+            font-weight: bold;
+        }
+
+        .user-input {
+            margin-top: 20px;
+        }
+
+        .user-input label {
+            display: block;
+        }
+
+        .user-input input[type="text"] {
+            padding: 8px;
+            font-size: 14px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        .warning {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<script>
+    function validateChoice() {
+        var userInput = document.getElementById('user-choice').value;
+        var warning = document.getElementById('choice-warning');
+
+        if (userInput !== '1' && userInput !== '2' && userInput !== '3' && userInput !== '4') {
+            warning.style.display = 'block';
+            return false; // Prevent form submission
+        } else {
+            warning.style.display = 'none';
+            return true; // Allow form submission
+        }
+    }
+</script>
+<body>
+    <div class="header">
+        <h1>  BANK OF INDIA</h1>
+    </div>
+    <div class="container">
+        <h2>User Portal</h2>
+        <div class="username">
+            <p>Welcome, {{ username }}</p>
+        </div>
+        <div class="options">
+            <ul>
+                <li><span>1.Withdraw Funds</span></li>
+                <li><span>2.Deposit Funds</span></li>
+                <li><span>3.View Transactions</span></li>
+                <li><span>4.Logout</span></li>
+
+            </ul>
+        </div>
+        
+        <form method="post" action="/homepage.html" onsubmit="return validateChoice()">
+            <label for="user-choice">Enter your choice (1, 2, 3, 4):</label>
+            <input type="text" id="user-choice" name="user-choice" required>
+            <p class="warning" id="choice-warning" style="display: none;">Invalid choice. Please enter 1, 2, 3, or 4.</p>
+            <input type="hidden" name="username" value="{{ username }}">
+            <button class="submit-btn" type="submit">Submit</button>
+        </form>
+        
+    </div>
+
+    
+</body>
+</html>

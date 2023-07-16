@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction History - Bank of India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .transaction-list {
+            margin-top: 20px;
+        }
+
+        .transaction-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .transaction-list table th,
+        .transaction-list table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .transaction-list table th {
+            background-color: #f2f2f2;
+        }
+
+        .home-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .home-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .home-button a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>  BANK OF INDIA</h1>
+    </div>
+    <div class="container">
+        <h2>Transaction History</h2>
+        <div class="transaction-list">
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>When</th>
+                    <th>Balance</th>
+                </tr>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction[1] }}</td>
+                    <td>{{ transaction[2] }}</td>
+                    <td>{{ transaction[3] }}</td>
+                    <td>{{ transaction[4] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="home-button">
+                <a href="/homepage.html?username={{ username }}">Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

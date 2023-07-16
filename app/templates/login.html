@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Bank of India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .warning {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function validateUsername() {
+            var usernameInput = document.getElementById('username');
+            var usernameWarning = document.getElementById('usernameWarning');
+
+            if (!/^[a-zA-Z0-9]+$/.test(usernameInput.value)) {
+                usernameWarning.style.display = 'block';
+            } else {
+                usernameWarning.style.display = 'none';
+            }
+        }
+
+        function validatePassword() {
+            var passwordInput = document.getElementById('password');
+            var passwordWarning = document.getElementById('passwordWarning');
+
+            if (
+                passwordInput.value.length < 6 ||
+                !/\d/.test(passwordInput.value) ||
+                !/[A-Z]/.test(passwordInput.value) ||
+                !/[!@#$%^&*()-=_+|;:'",.<>/?`~\[\]{}]/.test(passwordInput.value)
+            ) {
+                passwordWarning.style.display = 'block';
+            } else {
+                passwordWarning.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post" action="/login" onsubmit="return validateLoginForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required onblur="validateUsername()">
+        <p class="warning" id="usernameWarning" style="display: none;">Invalid username. Username should only contain letters and numbers.</p>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required onblur="validatePassword()">
+        <p class="warning" id="passwordWarning" style="display: none;">Invalid password. Password should be at least 6 characters long and contain at least one uppercase letter, one number, and one special character.</p>
+        
+        
+        <input type="submit" value="Login">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>

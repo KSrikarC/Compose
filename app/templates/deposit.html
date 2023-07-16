@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Withdrawal - Bank of India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .balance {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .withdrawal-form {
+            margin-top: 20px;
+        }
+
+        .withdrawal-form label {
+            display: block;
+        }
+
+        .withdrawal-form input[type="number"] {
+            padding: 8px;
+            font-size: 14px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        .warning {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>BANK OF INDIA</h1>
+    </div>
+    <div class="container">
+        <h2>Deposit Amount</h2>
+        <div class="balance">
+            <p>Your account Available balance: {{ balance }}</p>
+        </div>
+        <div class="withdrawal-form">
+            <form method="post" action="/deposit.html">
+                <label for="amount">Enter amount to deposit:</label>
+                <input type="text" id="amount" name="amount" required>
+                <input type="hidden" name="balance" value="{{ balance }}">
+                <input type="hidden" name="username" value="{{ username }}">
+                <button class="submit-btn" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

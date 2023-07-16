@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup - Bank of India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .warning {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function validateName() {
+            var nameInput = document.getElementById('name');
+            var nameWarning = document.getElementById('nameWarning');
+
+            if (!/^[a-zA-Z\s]+$/.test(nameInput.value)) {
+                nameWarning.style.display = 'block';
+            } else {
+                nameWarning.style.display = 'none';
+            }
+        }
+
+        function validateUsername() {
+            var usernameInput = document.getElementById('username');
+            var usernameWarning = document.getElementById('usernameWarning');
+
+            if (!/^[a-zA-Z0-9]+$/.test(usernameInput.value)) {
+                usernameWarning.style.display = 'block';
+            } else {
+                usernameWarning.style.display = 'none';
+            }
+        }
+
+        function validatePassword() {
+            var passwordInput = document.getElementById('password');
+            var passwordWarning = document.getElementById('passwordWarning');
+
+            if (
+                passwordInput.value.length < 6 ||
+                !/\d/.test(passwordInput.value) ||
+                !/[A-Z]/.test(passwordInput.value) ||
+                !/[!@#$%^&*()-=_+|;:'",.<>/?`~\[\]{}]/.test(passwordInput.value)
+            ) {
+                passwordWarning.style.display = 'block';
+            } else {
+                passwordWarning.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Signup</h1>
+    <form method="post" action="/signup">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required onblur="validateName()">
+        <p class="warning" id="nameWarning" style="display: none;">Invalid name. Name should only contain letters and spaces.</p>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required onblur="validateUsername()">
+        <p class="warning" id="usernameWarning" style="display: none;">Invalid username. Username should only contain letters and numbers.</p>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required onblur="validatePassword()">
+        <p class="warning" id="passwordWarning" style="display: none;">Invalid password. Password should be at least 6 characters long and contain at least one uppercase letter, one number, and one special character.</p>
+        
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required>
+        
+        <label for="amount">Amount to Deposit:</label>
+        <input type="text" id="amount" name="amount" required>
+        
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
